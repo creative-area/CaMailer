@@ -9,7 +9,7 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 -	Send emails directly or in database queue
 -	Send HTML (with text fallback) or simple text message
 -	Single/Multiple To, CC, BCC recipients
--	Support single/multiple file Attachments
+-	Support single/multiple attachments
 
 ## Requirements
 
@@ -24,8 +24,11 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 1.	Rename/copy "etc/camailercfg.sample.xml" to "etc/camailercfg.xml"
 2.	Fill "etc/camailercfg.xml" with your own data
 3.	Set the execution attributes of the bin/camailer.php script
+		
 		chmod +x camailer.php
+		
 4.	Init the queuing table in the database of your choice with the following command :
+		
 		./camailer.php initdb
 	
 ## Usage
@@ -42,9 +45,8 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 	Commands:
 	  send       Send an email
 	  queuesend  Send emails from queue
-	  initdb     Create the necessary table in database for mail queing
+	  initdb     Create the necessary table in database for mail queuing
 	  
-
 
 ### The "send" command :
 
@@ -84,6 +86,20 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 	  -h, --help               show this help message and exit
 
 
+## Examples
 
+Send the content of test.txt to recipient@example.com
 
+	./camailer.php send recipient@example.com ../test/test.txt
+	
+Send the content of test.html to recipient@example.com who's name is Chuck Norris with a "test" subject
 
+	./camailer.php send -H -s test "Chuck Norris <recipient@example.com>" ../test/test.html
+
+OK same as above but specify a sender (From) and attach 2 files to our email
+
+	./camailer.php send -H -f "Florent Bourgeois <florent@example.com>" -s test "Chuck Norris <recipient@example.com>" ../test/test.html ../test/att_1.png ../test/att_2.png
+	
+But you maybe prefer queuing the mail in databasze. Simply add the "-q" or "--queue" option
+
+	./camailer.php send -q -H -f "Florent Bourgeois <florent@example.com>" -s test "Chuck Norris <recipient@example.com>" ../test/test.html ../test/att_1.png ../test/att_2.png

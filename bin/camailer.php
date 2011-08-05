@@ -145,7 +145,7 @@ try {
 		}
 		
 		// attachments
-		if ( !empty($attachments) ) {
+		if ( !empty($result->command->args['attachments']) ) {
 			$attachments = $result->command->args['attachments'];
 			foreach ( $attachments as $file ) {
 				if ( !file_exists( $file ) ) {

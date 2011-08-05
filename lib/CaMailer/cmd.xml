@@ -67,6 +67,6 @@
 	</command>
 	<command>
 		<name>initdb</name>
-		<description>Create the necessary table in database for mail queing</description>
+		<description>Create the necessary table in database for mail queuing</description>
 	</command>
 </command>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<command>
+	<description>CaMailer is a small but powerful PHP command line based program for sending electronic mail.</description>
+	<version>0.1</version>
+	<command>
+		<name>send</name>
+		<description>Send an email</description>
+		<option name="from">
+			<short_name>-f</short_name>
+			<long_name>--from</long_name>
+			<description>Specify the sender (From).</description>
+		</option>
+		<option name="subject">
+			<short_name>-s</short_name>
+			<long_name>--subject</long_name>
+			<description>Specify the subject of the message.</description>
+		</option>
+		<option name="cc">
+			<short_name>-c</short_name>
+			<long_name>--cc-addr</long_name>
+			<description>Send blind carbon copies to cc-addr list of users. The cc-addr argument should be a comma-separated list of names.</description>
+			<action>ParseAddressList</action>
+		</option>
+		<option name="bcc">
+			<short_name>-b</short_name>
+			<long_name>--bcc-addr</long_name>
+			<description>Send blind carbon copies to bcc-addr list of users. The bcc-addr argument should be a comma-separated list of names.</description>
+			<action>ParseAddressList</action>
+		</option>
+		<option name="ishtml">
+			<short_name>-H</short_name>
+			<long_name>--ishtml</long_name>
+			<description>Specify if the message file is HTML formatted</description>
+			<action>StoreTrue</action>
+		</option>
+		<option name="queue">
+			<short_name>-q</short_name>
+			<long_name>--queue</long_name>
+			<description>Queue the message in database.</description>
+			<action>StoreTrue</action>
+		</option>
+		<argument name="to">
+			<description>Specify the main recipient (To).</description>
+			<help_name>recipient mail to</help_name>
+		</argument>
+		<argument name="message">
+			<description>Specify the path to the message file. Text format by default but could be HTML (see --ishtml option)</description>
+			<help_name>message file</help_name>
+		</argument>
+		<argument name="attachments">
+			<description>Attach file(s) to your message.</description>
+			<multiple>true</multiple>
+			<optional>true</optional>
+			<help_name>file attachment(s)</help_name>
+		</argument>
+	</command>
+	<command>
+		<name>queuesend</name>
+		<description>Send emails from queue</description>
+		<option name="limit">
+			<short_name>-l</short_name>
+			<long_name>--limit</long_name>
+			<description>Maximum number of mails to send.</description>
+			<action>StoreInt</action>
+			<default>-1</default>
+		</option>
+	</command>
+	<command>
+		<name>initdb</name>
+		<description>Create the necessary table in database for mail queing</description>
+	</command>
+</command>

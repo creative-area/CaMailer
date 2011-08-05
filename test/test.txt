@@ -1,0 +1,3 @@
+CaMailer
+
+CaMailer is a small but powerful PHP commandline based program for sending electronic mail.

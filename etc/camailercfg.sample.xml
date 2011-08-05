@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<config>
+	<db_config>
+		<phptype>mysqli</phptype> <!-- Database backend used in PHP (i.e. mysql , pgsql etc.) -->
+		<username></username> <!-- User name for login. -->
+		<password></password> <!-- Password for login. -->
+		<hostspec>localhost</hostspec> <!-- Host specification (hostname[:port]). -->
+		<database></database> <!-- Database to use on the DBMS server. -->
+	</db_config>
+	<mail_config>
+		<driver>smtp</driver> <!-- smtp is the only supported backend at this time. -->
+		<smtp_host>localhost</smtp_host> <!-- The server to connect. -->
+		<smtp_port>25</smtp_port> <!-- The port to connect. -->
+		<smtp_auth>false</smtp_auth> <!-- Whether or not to use SMTP authentication. -->
+		<smtp_username></smtp_username> <!-- The username to use for SMTP authentication. -->
+		<smtp_password></smtp_password> <!-- The password to use for SMTP authentication. -->
+		<smtp_localhost>localhost</smtp_localhost> <!-- The value to give when sending EHLO or HELO. -->
+		<smtp_timeout>300</smtp_timeout> <!-- The SMTP connection timeout. -->
+		<smtp_persist>false</smtp_persist> <!-- Indicates whether or not the SMTP connection should persist over multiple calls to the send() method. -->
+		<smtp_pipelining>false</smtp_pipelining> <!-- Indicates whether or not the SMTP commands pipelining should be used. -->
+		<smtp_debug>false</smtp_debug> <!-- Whether to enable SMTP debug mode or not. -->
+		<mail_queue_driver>mdb2</mail_queue_driver> <!-- MDB2 is the only supported container at this time. -->
+		<mail_queue_table>mail_queue</mail_queue_table> <!-- The mail queue table name. -->
+		<mail_charset>utf-8</mail_charset> <!-- The charset to use in mails. -->
+		<mail_returnpath></mail_returnpath> <!-- An email address in order to manage bounces.  -->
+	</mail_config>
+</config>

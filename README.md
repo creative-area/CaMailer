@@ -4,6 +4,7 @@ __CaMailer__ is a small but powerful PHP command line based program for sending 
 
 __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 
+
 ## Main Features
 
 -	Send emails directly or in database queue
@@ -11,29 +12,31 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 -	Single/Multiple To, CC, BCC recipients
 -	Support single/multiple attachments
 
+
 ## Requirements
 
 -	Unix system at this time (Linux, OSX, etc...)
--	You need PHP 5.2.0 or newer.
+-	You need PHP 5.2.0 or newer \* with PHP CLI binary. 
 -	MySQL 5.0 or newer (but should also work with previous versions).
--	A local or external SMTP server (Gmail for instance).
--	The CaMailer main script (bin/camailer.php) make use of Unix shell scripting syntax (#!/usr/bin/php). Be sure to change this path if your PHP CLI binary path is different.
+-	A local or external SMTP server (Gmail for example).
+
+\* CaMailer make use of many Pear libraries. Most of them are not PHP 5.3 ready yet. That's why we prevent strict and deprecated errors form displaying.
+
 
 ## Install
 
-1.	Rename/copy "etc/camailercfg.sample.xml" to "etc/camailercfg.xml"
-2.	Fill "etc/camailercfg.xml" with your own data
-3.	Set the execution attributes of the bin/camailer.php script
+1.	Rename/copy _etc/camailercfg.sample.xml_ to _etc/camailercfg.xml_
+2.	Fill _etc/camailercfg.xml_ with your own data		
+3.	Init the queuing table in the database of your choice with the following command :
 		
-		chmod +x camailer.php
-		
-4.	Init the queuing table in the database of your choice with the following command :
-		
-		./camailer.php initdb
+		{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php initdb
+
 	
 ## Usage
 
-3 commands are available at this time :
+3 commands are available at this time. Here is the result of the genral help call :
+
+	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php --help
 	
 	./camailer.php [options]
 	./camailer.php [options] <command> [options] [args]
@@ -46,6 +49,11 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 	  send       Send an email
 	  queuesend  Send emails from queue
 	  initdb     Create the necessary table in database for mail queuing
+	  
+	  
+### "initdb" command :
+
+	see installation above
 	  
 
 ### The "send" command :
@@ -73,6 +81,7 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 	  message file        Specify the path to the message file. Text format by
 	                      default but could be HTML (see --ishtml option) 
 	                      file attachment(s)  Attach file(s) to your message.
+
 
 ### The "queuesend" command :
 

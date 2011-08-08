@@ -1,5 +1,9 @@
-#!/usr/bin/php
 <?php
+// fatal run-time errors only
+// These indicate errors that can not be recovered from, such as 
+// a memory allocation problem. Execution of the script is halted.
+error_reporting(1);
+
 // path vars
 $lib_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib';
 $config_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'etc';

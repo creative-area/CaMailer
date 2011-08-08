@@ -60,6 +60,8 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 
 	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php send --help
 
+	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php send --help
+
 	Send an email
 
 	./camailer.php send [options] <recipient mail to> <message file> <file attachment(s)...>
@@ -86,6 +88,8 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 
 
 ### "queuesend" command :
+
+	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php queuesend --help
 
 	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php queuesend --help
 

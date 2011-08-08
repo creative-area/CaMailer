@@ -34,7 +34,7 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 	
 ## Usage
 
-3 commands are available at this time. Here is the result of the genral help call :
+3 commands are available at this time. Here is the result of the main help call :
 
 	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php --help
 	
@@ -56,7 +56,9 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 	see installation above
 	  
 
-### The "send" command :
+### "send" command :
+
+	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php send --help
 
 	Send an email
 
@@ -83,7 +85,9 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 	                      file attachment(s)  Attach file(s) to your message.
 
 
-### The "queuesend" command :
+### "queuesend" command :
+
+	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php queuesend --help
 
 	Send emails from queue
 	

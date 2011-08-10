@@ -7,6 +7,7 @@ error_reporting(1);
 // path vars
 $lib_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib';
 $config_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'etc';
+$xmlfile = $lib_path . DIRECTORY_SEPARATOR . 'CaMailer' . DIRECTORY_SEPARATOR . 'cmd.xml';
 
 // set the include path
 set_include_path(get_include_path() . PATH_SEPARATOR . $lib_path);
@@ -25,10 +26,8 @@ require_once 'Console/CommandLine/Action.php';
 require_once 'CaMailer/helpers.php';
 
 // custom commandline action class
-class ActionParseAddressList extends Console_CommandLine_Action
-{
-	public function execute( $value = false, $params = array() )
-	{
+class ActionParseAddressList extends Console_CommandLine_Action {
+	public function execute( $value = false, $params = array() ) {
 		$addresslist = Mail_RFC822::parseAddressList( $value );
 		if ( PEAR::isError( $addresslist ) ) {
 			throw new Exception( sprintf(
@@ -40,22 +39,31 @@ class ActionParseAddressList extends Console_CommandLine_Action
 	}
 }
 
+class HtmlRenderer extends Console_CommandLine_Renderer_Default {
+	public function usage() {
+		return '<pre>' . parent::usage() . '</pre>';
+	}
+	public function error( $error ) {
+		return '<pre>' . parent::error( $error ) . '</pre>';
+	}
+}
+
 // register the action
 Console_CommandLine::registerAction( 'ParseAddressList', 'ActionParseAddressList' );
 
 // get the configuration
 $conf = new Config;
-$xml =& $conf->parseConfig($config_path . DIRECTORY_SEPARATOR . 'camailercfg.xml', 'XML');
-if (PEAR::isError($xml)) {
-    die('Error while reading configuration: ' . $xml->getMessage());
+$xml =& $conf->parseConfig( $config_path . DIRECTORY_SEPARATOR . 'camailercfg.xml', 'XML' );
+if (PEAR::isError( $xml )) {
+    die( 'Error while reading configuration: ' . $xml->getMessage() );
 }
 $settings = $xml->toArray();
 $db_config = $settings['root']['config']['db_config'];
 $mail_config = $settings['root']['config']['mail_config'];
 
 // create the parser from xml file
-$xmlfile = $lib_path . DIRECTORY_SEPARATOR . 'CaMailer' . DIRECTORY_SEPARATOR . 'cmd.xml';
-$parser  = Console_CommandLine::fromXmlFile($xmlfile);
+$parser  = Console_CommandLine::fromXmlFile( $xmlfile );
+$parser->accept( new HtmlRenderer() );
 
 // run the parser
 try {

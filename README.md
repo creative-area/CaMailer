@@ -1,6 +1,6 @@
 #CaMailer
 
-__CaMailer__ is a small but powerful PHP command line based program for sending electronic mail. It's written in PHP and make use of some Pear packages. 
+__CaMailer__ is a small but powerful command line based program for sending electronic mail. It's written in PHP and make use of some Pear packages. 
 
 __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 
@@ -60,8 +60,6 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 
 	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php send --help
 
-	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php send --help
-
 	Send an email
 
 	./camailer.php send [options] <recipient mail to> <message file> <file attachment(s)...>
@@ -91,8 +89,6 @@ __CaMailer__ is mainly inspired by unix tools such as Mailx or Mutt.
 
 	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php queuesend --help
 
-	{YOUR_PHP_BINARY_PREFIX}/php ./camailer.php queuesend --help
-
 	Send emails from queue
 	
 	Usage:
@@ -117,6 +113,6 @@ OK same as above but specify a sender (From) and attach 2 files to our email
 
 	./camailer.php send -H -f "Florent Bourgeois <florent@example.com>" -s test "Chuck Norris <recipient@example.com>" ../test/test.html ../test/att_1.png ../test/att_2.png
 	
-But you maybe prefer queuing the mail in databasze. Simply add the "-q" or "--queue" option
+But you maybe prefer queuing the mail in database. Simply add the "-q" or "--queue" option
 
 	./camailer.php send -q -H -f "Florent Bourgeois <florent@example.com>" -s test "Chuck Norris <recipient@example.com>" ../test/test.html ../test/att_1.png ../test/att_2.png

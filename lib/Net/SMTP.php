@@ -18,7 +18,7 @@
 // |          Damian Alejandro Fernandez Sosa <damlists@cnba.uba.ar>      |
 // +----------------------------------------------------------------------+
 //
-// $Id: SMTP.php 311427 2011-05-26 04:25:19Z jon $
+// $Id: SMTP.php 314875 2011-08-13 17:03:30Z jon $
 
 require_once 'PEAR.php';
 require_once 'Net/Socket.php';
@@ -189,7 +189,7 @@ class Net_SMTP
 
         /* Include the Auth_SASL package.  If the package is available, we 
          * enable the authentication methods that depend upon it. */
-        if ((@include_once 'Auth/SASL.php') === true) {
+        if (@include_once 'Auth/SASL.php') {
             $this->setAuthMethod('CRAM-MD5', array($this, '_authCram_MD5'));
             $this->setAuthMethod('DIGEST-MD5', array($this, '_authDigest_MD5'));
         }
